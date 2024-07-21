@@ -76,6 +76,10 @@ function App() {
     }
   }
 
+  function cancelChangeWordHandler() {
+    setChangingWordID(-1);
+  }
+
   function wordInputHandler(newText: string) {
     setWordInput(newText);
   }
@@ -101,7 +105,11 @@ function App() {
       <Container maxWidth={"sm"}>
         {words.map((word) => {
           return (
-            <Container key={word.id} disableGutters>
+            <Container
+              key={word.id}
+              disableGutters
+              onClick={cancelChangeWordHandler}
+            >
               <Box
                 sx={{
                   display: "flex",
@@ -119,6 +127,7 @@ function App() {
                         value={wordInput}
                         fullWidth
                         autoFocus
+                        onClick={(e) => e.stopPropagation()}
                         onChange={(
                           event: React.ChangeEvent<HTMLInputElement>
                         ) => {
@@ -139,6 +148,7 @@ function App() {
                         size="small"
                         value={translateInput}
                         fullWidth
+                        onClick={(e) => e.stopPropagation()}
                         onChange={(
                           event: React.ChangeEvent<HTMLInputElement>
                         ) => {
@@ -188,17 +198,30 @@ function App() {
                   }}
                 >
                   <IconButton
-                    onClick={() => changeWordHandler(word)}
-                    style={{
-                      color: "#fff",
-                      backgroundColor: "#e86e30",
-                      borderRadius: "0",
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeWordHandler(word);
                     }}
+                    style={
+                      word.id === changingWordID
+                        ? {
+                            color: "#fff",
+                            backgroundColor: "#00c300",
+                            borderRadius: "0",
+                          }
+                        : {
+                            color: "#fff",
+                            backgroundColor: "#e86e30",
+                            borderRadius: "0",
+                          }
+                    }
                   >
                     <EditIcon />
                   </IconButton>
                   <IconButton
-                    onClick={() => deleteWordHandler(word)}
+                    onClick={(e) => {
+                      deleteWordHandler(word);
+                    }}
                     style={{
                       color: "#fff",
                       backgroundColor: "red",
