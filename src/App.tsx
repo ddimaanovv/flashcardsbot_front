@@ -32,28 +32,28 @@ type wordType = {
 
 type wordsType = Array<wordType>;
 
-// let initialWords: wordsType = [
-//   { id: 4, userID: "493242203", word: "Home", translate: "дом" },
-//   {
-//     id: 5,
-//     userID: "493242203",
-//     word: "Indispensable",
-//     translate: "неотъемлемый",
-//   },
-//   {
-//     id: 6,
-//     userID: "493242203",
-//     word: "Appliance",
-//     translate: "прибор или устройство",
-//   },
-//   { id: 7, userID: "493242203", word: "Go", translate: "идти" },
-//   {
-//     id: 8,
-//     userID: "493242203",
-//     word: "Eminent",
-//     translate: "выдающийся",
-//   },
-// ];
+let initialWords: wordsType = [
+  { id: 4, userID: "493242203", word: "Home", translate: "дом" },
+  {
+    id: 5,
+    userID: "493242203",
+    word: "Indispensable",
+    translate: "неотъемлемый",
+  },
+  {
+    id: 6,
+    userID: "493242203",
+    word: "Appliance",
+    translate: "прибор или устройство",
+  },
+  { id: 7, userID: "493242203", word: "Go", translate: "идти" },
+  {
+    id: 8,
+    userID: "493242203",
+    word: "Eminent",
+    translate: "выдающийся",
+  },
+];
 
 function App() {
   let [words, setWords] = useState<wordsType>();
@@ -66,7 +66,7 @@ function App() {
   const userTgId = tg.initDataUnsafe?.user?.id;
   console.log(userTgId);
 
-  useRecieveData(URL, userTgId, setWords);
+  useRecieveData(URL, userTgId, setWords, initialWords);
 
   useEffect(() => {
     tg.ready();
