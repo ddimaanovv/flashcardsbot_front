@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import {
   Box,
@@ -12,6 +12,16 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Modal from "./Components/Modal/Modal";
+import useRecieveData from "./Components/UseFetch/useRecieveData";
+
+declare global {
+  interface Window {
+    Telegram: any;
+  }
+}
+const URL = "//127.0.0.1:5000/words/";
+const tg = window.Telegram.WebApp;
+console.log(tg.initDataUnsafe);
 
 type wordType = {
   id: number;
@@ -22,42 +32,50 @@ type wordType = {
 
 type wordsType = Array<wordType>;
 
-let initialWords: wordsType = [
-  { id: 4, userID: "493242203", word: "Home", translate: "дом" },
-  {
-    id: 5,
-    userID: "493242203",
-    word: "Indispensable",
-    translate: "неотъемлемый",
-  },
-  {
-    id: 6,
-    userID: "493242203",
-    word: "Appliance",
-    translate: "прибор или устройство",
-  },
-  { id: 7, userID: "493242203", word: "Go", translate: "идти" },
-  {
-    id: 8,
-    userID: "493242203",
-    word: "Eminent",
-    translate: "выдающийся",
-  },
-];
+// let initialWords: wordsType = [
+//   { id: 4, userID: "493242203", word: "Home", translate: "дом" },
+//   {
+//     id: 5,
+//     userID: "493242203",
+//     word: "Indispensable",
+//     translate: "неотъемлемый",
+//   },
+//   {
+//     id: 6,
+//     userID: "493242203",
+//     word: "Appliance",
+//     translate: "прибор или устройство",
+//   },
+//   { id: 7, userID: "493242203", word: "Go", translate: "идти" },
+//   {
+//     id: 8,
+//     userID: "493242203",
+//     word: "Eminent",
+//     translate: "выдающийся",
+//   },
+// ];
 
 function App() {
-  let [words, setWords] = useState(initialWords);
+  let [words, setWords] = useState<wordsType>();
   let [changingWordID, setChangingWordID] = useState(-1);
   let [wordInput, setWordInput] = useState("");
   let [translateInput, setTranslateInput] = useState("");
   let [wordToDelete, setWordToDelete] = useState<wordType>();
-
   let [modalActive, setModalActive] = useState(false);
+
+  const userTgId = tg.initDataUnsafe?.user?.id;
+  console.log(userTgId);
+
+  useRecieveData(URL, userTgId, setWords);
+
+  useEffect(() => {
+    tg.ready();
+  }, []);
 
   function changeWordHandler(wordToChange: wordType) {
     if (changingWordID === wordToChange.id) {
       setChangingWordID(-1);
-      let newMassOfWords = words.map((word) => {
+      let newMassOfWords = words?.map((word) => {
         if (word.id === wordToChange.id) {
           return {
             ...word,
@@ -92,7 +110,7 @@ function App() {
   }
 
   function confirmWordDelete() {
-    setWords(words.filter((word) => word.id !== wordToDelete?.id));
+    setWords(words?.filter((word) => word.id !== wordToDelete?.id));
     setModalActive(false);
   }
 
@@ -103,7 +121,7 @@ function App() {
   return (
     <div>
       <Container maxWidth={"sm"}>
-        {words.map((word) => {
+        {words?.map((word) => {
           return (
             <Container
               key={word.id}
@@ -207,12 +225,16 @@ function App() {
                         ? {
                             color: "#fff",
                             backgroundColor: "#00c300",
-                            borderRadius: "0",
+                            borderRadius: "15px",
+                            height: "50px",
+                            width: "50px",
                           }
                         : {
                             color: "#fff",
                             backgroundColor: "#e86e30",
-                            borderRadius: "0",
+                            borderRadius: "15px",
+                            height: "50px",
+                            width: "50px",
                           }
                     }
                   >
@@ -225,7 +247,10 @@ function App() {
                     style={{
                       color: "#fff",
                       backgroundColor: "red",
-                      borderRadius: "0",
+                      borderRadius: "15px",
+                      height: "50px",
+                      width: "50px",
+                      marginLeft: "2px",
                     }}
                   >
                     <DeleteIcon />
