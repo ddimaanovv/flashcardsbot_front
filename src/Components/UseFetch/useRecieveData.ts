@@ -22,5 +22,5 @@ export default function useRecieveData(
       }
     };
     fetchData();
-  }, []);
+  }, [URL, userTgId, setWords, initialWords]);
 }
