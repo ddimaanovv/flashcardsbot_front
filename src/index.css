@@ -3,10 +3,36 @@
 	margin: 0px;
 	border: none;
 	font-family: "Roboto";
+	background-color: var(--tg-color-scheme);
+	color: var(--tg-theme-text-color);
+}
+
+hr {
+	background-color: var(--tg-theme-subtitle-text-color);
 }
 
 *,
 *::before,
 *::after {
 	box-sizing: border-box;
+}
+
+input {
+	color: var(--tg-theme-text-color) !important;
+	border-radius: 5px;
+	outline: 1px solid var(--tg-theme-subtitle-text-color, rgb(150, 150, 150)) !important;
+	outline-offset: -1px;
+}
+
+path {
+	color: #fff;
+}
+
+input:focus {
+	outline: 2px solid var(--tg-theme-accent-text-color, rgb(87, 140, 255)) !important;
+	outline-offset: -1px;
+}
+
+.MuiOutlinedInput-notchedOutline {
+	border: none !important;
 }

@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "flashcardsbot-front",
   "version": "0.1.0",
   "private": true,
@@ -14,6 +15,9 @@
     "@types/node": "^16.18.102",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
+    "axios": "^1.7.2",
+    "crypto-js": "^4.2.0",
+    "dotenv": "^16.4.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-scripts": "5.0.1",
@@ -45,6 +49,7 @@
     ]
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.2.2",
     "telegram-webapps": "^7.7.0"
   }
 }
