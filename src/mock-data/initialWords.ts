@@ -1,4 +1,4 @@
-import { wordType } from "../components/wordWrapperComponent/wordComponent/word.type";
+import { wordType } from "../components/wordWrapperComponent/word.type";
 
 export let initialWords: Array<wordType> = [
   { id: 4, userID: "493242203", word: "Home", translate: "дом" },

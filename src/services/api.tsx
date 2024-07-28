@@ -7,7 +7,7 @@ export const api = {
 };
 
 const axiosInstance = axios.create({
-  baseURL: process.env.BACK_URL,
+  baseURL: "https://flashcardsbot-back.onrender.com/words/",
   timeout: 1000,
   headers: { "Content-Type": "application/json" },
 });

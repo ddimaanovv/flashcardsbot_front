@@ -1,34 +1,27 @@
-import axios from "axios";
 import { useEffect } from "react";
+import { initialWords } from "../mock-data/initialWords";
+import { api } from "./api";
 
-export default function useRecieveData(
-  URL: string | undefined,
-  tg: any,
-  setWords: any,
-  initialWords: any
-) {
+export default function useRecieveData(tg: any, setWords: any) {
   useEffect(() => {
-    const fetchData = async () => {
-      try {
+    try {
+      const fetchData = async () => {
         if (tg.initDataUnsafe?.user?.id === undefined) {
           setWords(initialWords);
           return;
         }
-        console.log(tg.initData);
 
-        const response = await axios.post(
-          `${URL}${tg.initDataUnsafe?.user?.id}`,
-          {
-            tgInitData: tg.initData,
-          }
+        const response = await api.getWords(
+          tg.initDataUnsafe?.user?.id,
+          tg.initData
         );
 
-        const words = await response.data;
+        const words = response.data;
         setWords(words);
-      } catch (error) {
-        setWords([]);
-      }
-    };
-    fetchData();
-  }, [URL, tg, setWords, initialWords]);
+      };
+      fetchData();
+    } catch (error) {
+      setWords([]);
+    }
+  }, [tg, setWords]);
 }
