@@ -42,14 +42,14 @@ export function WordWrapperComponent({
 
   async function changeWordHandler(wordToChange: wordType) {
     if (changingWordID === wordToChange.id) {
-      const response = await api.editWord(
+      const words = await api.editWord(
         tgInitData,
         wordToChange.id,
         tgUserId,
-        wordToChange.word,
-        wordToChange.translate
+        wordInput,
+        translateInput
       );
-      setWords(response.data);
+      setWords(words);
       setChangingWordID(-1);
     } else {
       setChangingWordID(wordToChange.id);

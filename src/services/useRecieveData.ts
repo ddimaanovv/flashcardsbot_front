@@ -11,13 +11,15 @@ export default function useRecieveData(tg: any, setWords: any) {
           return;
         }
 
-        const response = await api.getWords(
+        const words = await api.getWords(
           tg.initDataUnsafe?.user?.id,
           tg.initData
         );
 
-        const words = response.data;
+        console.log(words);
+
         setWords(words);
+        tg.ready();
       };
       fetchData();
     } catch (error) {

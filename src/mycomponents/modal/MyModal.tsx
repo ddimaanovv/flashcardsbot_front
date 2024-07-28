@@ -23,15 +23,15 @@ export function MyModal({
 }: MyModalType) {
   async function confirmWordDelete() {
     if (wordToDelete) {
-      const response = await api.deleteWord(
+      const words = await api.deleteWord(
         tgInitData,
         wordToDelete.id,
         tgUserId,
         wordToDelete.word,
         wordToDelete.translate
       );
-      if (response.data.message === undefined) {
-        setWords(response.data);
+      if (words.message === undefined) {
+        setWords(words);
         setModalActive(false);
       }
     }

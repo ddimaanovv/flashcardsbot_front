@@ -6,7 +6,7 @@
  done 5) Добавить чтобы тема была как в телеге (темная или светлая)s
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Container } from "@mui/material";
 import useRecieveData from "./services/useRecieveData";
@@ -28,10 +28,6 @@ function App() {
   let [wordToDelete, setWordToDelete] = useState<wordType>();
   let [searchInput, setSearchInput] = useState("");
   let [modalActive, setModalActive] = useState(false);
-
-  useEffect(() => {
-    tg.ready();
-  }, []);
 
   useRecieveData(tg, setWords);
 
@@ -56,13 +52,13 @@ function App() {
           setWords={setWords}
           searchInput={searchInput}
           tgInitData={tg.initData}
-          tgUserId={tg.initDataUnsafe?.user?.id}
+          tgUserId={String(tg.initDataUnsafe?.user?.id)}
           deleteWordHandler={deleteWordHandler}
         />
       </Container>
       <MyModal
         tgInitData={tg.initData}
-        tgUserId={tg.initDataUnsafe?.user?.id}
+        tgUserId={String(tg.initDataUnsafe?.user?.id)}
         setWords={setWords}
         modalActive={modalActive}
         setModalActive={setModalActive}

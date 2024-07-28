@@ -7,7 +7,7 @@ export const api = {
 };
 
 const axiosInstance = axios.create({
-  baseURL: "https://flashcardsbot-back.onrender.com/words/",
+  baseURL: "//127.0.0.1:5000/words/",
   timeout: 1000,
   headers: { "Content-Type": "application/json" },
 });
@@ -52,7 +52,7 @@ async function deleteWord(
   translate: string
 ) {
   try {
-    const response = await axiosInstance.delete(`${URL}`, {
+    const response = await axiosInstance.delete("", {
       data: {
         tgInitData: tgInitData,
         id: wordToDeleteId,
