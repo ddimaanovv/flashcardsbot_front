@@ -9,11 +9,11 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Container } from "@mui/material";
+import useRecieveData from "./services/useRecieveData";
 import { wordType } from "./components/wordWrapperComponent/word.type";
 import { SearchField } from "./components/searchComponent/SearchField";
-import { MyModal } from "./components/modal/MyModal";
-import useRecieveData from "./services/useRecieveData";
 import { WordWrapperComponent } from "./components/wordWrapperComponent/WordWrapperComponent";
+import { MyModal } from "./components/modal/MyModal";
 
 declare global {
   interface Window {
