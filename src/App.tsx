@@ -10,10 +10,10 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Container } from "@mui/material";
 import useRecieveData from "./services/useRecieveData";
-import { wordType } from "./components/wordWrapperComponent/word.type";
-import { SearchField } from "./components/searchComponent/SearchField";
-import { WordWrapperComponent } from "./components/wordWrapperComponent/WordWrapperComponent";
-import { MyModal } from "./components/modal/MyModal";
+import { wordType } from "./mycomponents/wordWrapperComponent/word.type";
+import { SearchField } from "./mycomponents/searchComponent/SearchField";
+import { WordWrapperComponent } from "./mycomponents/wordWrapperComponent/WordWrapperComponent";
+import { MyModal } from "./mycomponents/modal/MyModal";
 
 declare global {
   interface Window {
