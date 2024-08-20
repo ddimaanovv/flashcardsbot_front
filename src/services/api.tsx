@@ -8,7 +8,7 @@ export const api = {
 
 const axiosInstance = axios.create({
   baseURL:
-    "http://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me:5000/words/",
+    "https://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me/words/",
   timeout: 5000,
   headers: { "Content-Type": "application/json" },
 });
