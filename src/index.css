@@ -17,6 +17,13 @@ hr {
 	box-sizing: border-box;
 }
 
+.search {
+	position: sticky;
+	top: 0px;
+	border-radius: 0px 0px 5px 5px;
+	background-color: var(--tg-color-scheme, #fff); 
+}
+
 input {
 	color: var(--tg-theme-text-color) !important;
 	border-radius: 5px;

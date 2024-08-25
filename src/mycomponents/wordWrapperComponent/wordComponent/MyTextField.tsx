@@ -30,7 +30,7 @@ export function MyTextField({
           lineHeight: 1,
           height: "26px",
         },
-        margin: "1px 0px 2px",
+        margin: "2px 0px 3px",
       }}
     ></TextField>
   );

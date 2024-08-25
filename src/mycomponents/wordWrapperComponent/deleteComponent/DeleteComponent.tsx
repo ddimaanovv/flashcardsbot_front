@@ -15,6 +15,7 @@ export function DeleteButton({ deleteWordHandler, word }: PropsType) {
         deleteWordHandler(word);
       }}
       style={{
+        position: "inherit",
         color: "#fff",
         backgroundColor: "red",
         borderRadius: "15px",

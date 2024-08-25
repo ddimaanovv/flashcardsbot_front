@@ -23,6 +23,7 @@ export function EditButton({
       style={
         word.id === changingWordID
           ? {
+              position: "inherit",
               color: "#fff",
               backgroundColor: "#00c300",
               borderRadius: "15px",
@@ -30,6 +31,7 @@ export function EditButton({
               width: "50px",
             }
           : {
+              position: "inherit",
               color: "#fff",
               backgroundColor: "#e86e30",
               borderRadius: "15px",

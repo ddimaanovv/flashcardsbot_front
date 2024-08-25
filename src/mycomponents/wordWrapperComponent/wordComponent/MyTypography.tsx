@@ -13,7 +13,7 @@ export function MyTypography({ word, variant }: MyTypographyType) {
       sx={{
         padding: "5px 5px",
         lineHeight: 1,
-        margin: "1px 0px",
+        margin: "2px 0px 2px",
       }}
     >
       {word}

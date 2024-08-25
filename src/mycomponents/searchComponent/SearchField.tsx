@@ -1,5 +1,5 @@
 import React from "react";
-import { TextField } from "@mui/material";
+import { Box, TextField } from "@mui/material";
 
 type SearchFieldType = {
   searchInput: string;
@@ -11,20 +11,22 @@ export function SearchField({
   searchInputHandler,
 }: SearchFieldType) {
   return (
-    <TextField
-      variant="outlined"
-      size="small"
-      value={searchInput}
-      fullWidth
-      type="search"
-      placeholder="Поиск"
-      autoComplete="off"
-      onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-        searchInputHandler(event.target.value);
-      }}
-      sx={{
-        margin: "5px 0px",
-      }}
-    ></TextField>
+    <Box className="search">
+      <TextField
+        variant="outlined"
+        size="small"
+        value={searchInput}
+        fullWidth
+        type="search"
+        placeholder="Поиск"
+        autoComplete="off"
+        onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+          searchInputHandler(event.target.value);
+        }}
+        sx={{
+          marginTop: "5px",
+        }}
+      ></TextField>
+    </Box>
   );
 }

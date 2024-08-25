@@ -21,4 +21,24 @@ export let initialWords: Array<wordType> = [
     word: "Eminent",
     translate: "выдающийся",
   },
+  // { id: 42, userID: "493242203", word: "Home", translate: "дом" },
+  // {
+  //   id: 55,
+  //   userID: "493242203",
+  //   word: "Indispensable",
+  //   translate: "неотъемлемый",
+  // },
+  // {
+  //   id: 65,
+  //   userID: "493242203",
+  //   word: "Appliance",
+  //   translate: "прибор или устройство",
+  // },
+  // { id: 75, userID: "493242203", word: "Go", translate: "идти" },
+  // {
+  //   id: 85,
+  //   userID: "493242203",
+  //   word: "Eminent",
+  //   translate: "выдающийся",
+  // },
 ];
