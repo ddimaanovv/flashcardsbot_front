@@ -32,11 +32,12 @@ function App() {
   let [modalActive, setModalActive] = useState(false);
 
   useRecieveData(tg, setWords);
+  console.log(window.innerHeight);
 
   useEffect(() => {
     function resizeHandler() {
       console.log("click event triggered");
-      document.body.style.maxHeight = `${window.visualViewport?.height}px`;
+      document.body.style.height = "150vh";
     }
 
     window.visualViewport?.addEventListener("resize", resizeHandler);
