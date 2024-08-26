@@ -6,8 +6,8 @@ export default function useRecieveData(tg: any, setWords: any) {
   useEffect(() => {
     try {
       const fetchData = async () => {
-        //if (tg.initDataUnsafe?.user?.id === undefined) {
-        if (true) {
+        if (tg.initDataUnsafe?.user?.id === undefined) {
+          //if (true) {
           setWords(initialWords);
           return;
         }
