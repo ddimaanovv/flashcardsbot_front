@@ -36,7 +36,7 @@ function App() {
   useEffect(() => {
     function resizeHandler() {
       console.log("click event triggered");
-      document.body.style.minHeight = `${window.visualViewport?.height}px`;
+      document.body.style.maxHeight = `${window.visualViewport?.height}px`;
     }
 
     window.visualViewport?.addEventListener("resize", resizeHandler);
