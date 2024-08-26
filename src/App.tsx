@@ -8,7 +8,7 @@
       7) Поднимать слово при его редактировании
  */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Container } from "@mui/material";
 import useRecieveData from "./services/useRecieveData";
@@ -32,6 +32,19 @@ function App() {
   let [modalActive, setModalActive] = useState(false);
 
   useRecieveData(tg, setWords);
+
+  useEffect(() => {
+    function resizeHandler() {
+      console.log("click event triggered");
+      document.body.style.minHeight = `${window.visualViewport?.height}px`;
+    }
+
+    window.visualViewport?.addEventListener("resize", resizeHandler);
+
+    return () => {
+      window.visualViewport?.addEventListener("resize", resizeHandler);
+    };
+  }, []);
 
   function searchInputHandler(newText: string) {
     setSearchInput(newText);

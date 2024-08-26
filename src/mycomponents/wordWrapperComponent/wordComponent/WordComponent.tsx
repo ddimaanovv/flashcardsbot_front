@@ -28,12 +28,12 @@ export function WordComponent({
           <MyTextField
             input={wordInput}
             inputHandler={wordInputHandler}
-            autoFocus={false}
+            autoFocus={true}
           />
           <MyTextField
             input={translateInput}
             inputHandler={translateInputHandler}
-            autoFocus={true}
+            autoFocus={false}
           />
         </div>
       ) : (
