@@ -31,8 +31,7 @@ function App() {
   let [searchInput, setSearchInput] = useState("");
   let [modalActive, setModalActive] = useState(false);
 
-  useRecieveData(tg, setWords);
-  console.log(window.innerHeight);
+  const { isPending, isError, error } = useRecieveData(tg, setWords);
 
   useEffect(() => {
     function resizeHandler() {
@@ -59,22 +58,30 @@ function App() {
   return (
     <div>
       <Container maxWidth={"sm"}>
-        <SearchField
-          searchInput={searchInput}
-          searchInputHandler={searchInputHandler}
-        />
-        <WordWrapperComponent
-          words={words}
-          setWords={setWords}
-          searchInput={searchInput}
-          tgInitData={tg.initData}
-          tgUserId={String(tg.initDataUnsafe?.user?.id)}
-          deleteWordHandler={deleteWordHandler}
-        />
+        {isPending ? (
+          <div className="loader-container">
+            <div className="loader"></div>
+          </div>
+        ) : (
+          <>
+            <SearchField
+              searchInput={searchInput}
+              searchInputHandler={searchInputHandler}
+            />
+            <WordWrapperComponent
+              words={words}
+              setWords={setWords}
+              searchInput={searchInput}
+              tgInitData={tg.initData}
+              tgUserId={tg.initDataUnsafe?.user?.id}
+              deleteWordHandler={deleteWordHandler}
+            />
+          </>
+        )}
       </Container>
       <MyModal
         tgInitData={tg.initData}
-        tgUserId={String(tg.initDataUnsafe?.user?.id)}
+        tgUserId={tg.initDataUnsafe?.user?.id}
         setWords={setWords}
         modalActive={modalActive}
         setModalActive={setModalActive}

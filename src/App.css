@@ -2,3 +2,24 @@
     display: flex;
     align-items: center
 }
+
+.loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Занимает всю высоту экрана */
+  }
+  
+  .loader {
+    border: 8px solid #f3f3f3; /* Цвет фона лоадера */
+    border-top: 8px solid #3498db; /* Цвет верхней части лоадера */
+    border-radius: 50%; /* Круглая форма */
+    width: 60px; /* Ширина лоадера */
+    height: 60px; /* Высота лоадера */
+    animation: spin 1s linear infinite; /* Анимация вращения */
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }

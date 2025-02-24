@@ -6,17 +6,25 @@ export const api = {
   deleteWord: deleteWord,
 };
 
+const INITIAL_TGID = "123456789";
+
+// const axiosInstance = axios.create({
+//   baseURL:
+//     "https://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me/words/",
+//   timeout: 5000,
+//   headers: { "Content-Type": "application/json" },
+// });
+
 const axiosInstance = axios.create({
-  baseURL:
-    "https://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me/words/",
+  baseURL: "http://localhost:5000/words/",
   timeout: 5000,
   headers: { "Content-Type": "application/json" },
 });
 
-async function getWords(userId: number, tgInitData: string) {
+async function getWords(tgUserId: number, tgInitData: string) {
   try {
-    const response = await axiosInstance.post(`${userId}`, {
-      tgInitData: tgInitData,
+    const response = await axiosInstance.post(`${tgUserId || INITIAL_TGID}`, {
+      tgInitData: tgInitData || "123",
     });
     return response.data;
   } catch (error) {
@@ -32,10 +40,11 @@ async function editWord(
   translate: string
 ) {
   try {
+    let tgUserIdForQuery = tgUserId || INITIAL_TGID;
     const response = await axiosInstance.put("", {
       tgInitData: tgInitData,
       id: wordToChangeId,
-      tgId: tgUserId,
+      tgId: tgUserIdForQuery.toString(),
       word: word,
       translate: translate,
     });
@@ -53,11 +62,12 @@ async function deleteWord(
   translate: string
 ) {
   try {
+    let tgUserIdForQuery = tgUserId || INITIAL_TGID;
     const response = await axiosInstance.delete("", {
       data: {
         tgInitData: tgInitData,
         id: wordToDeleteId,
-        tgId: tgUserId,
+        tgId: tgUserIdForQuery.toString(),
         word: word,
         translate: translate,
       },
