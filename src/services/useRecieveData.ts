@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-//import { initialWords } from "../mock-data/initialWords";
+//import { initialWords } from "../mock-data/initialWords"; теперь используются данные из БД
 import { api } from "./api";
 import { useQuery } from "@tanstack/react-query";
 
