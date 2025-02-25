@@ -24,6 +24,7 @@ declare global {
 }
 
 const tg = window.Telegram.WebApp;
+console.log("123");
 
 function App() {
   let [words, setWords] = useState<Array<wordType>>();
