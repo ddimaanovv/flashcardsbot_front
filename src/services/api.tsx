@@ -16,7 +16,7 @@ const INITIAL_TGID = "123456789";
 // });
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000/words/",
+  baseURL: "http://192.168.1.90:5000/words/",
   timeout: 5000,
   headers: { "Content-Type": "application/json" },
 });

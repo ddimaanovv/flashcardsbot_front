@@ -55,29 +55,38 @@ function App() {
     setWordToDelete(wordToDelete);
   }
 
+  if (isPending) {
+    return (
+      <Container maxWidth={"sm"}>
+        <div className="loader-container">
+          <div className="loader"></div>
+        </div>
+      </Container>
+    );
+  }
+  if (isError) {
+    return (
+      <div className="error-message">
+        <strong>Ошибка:</strong> {"Что то пошло не так"}
+      </div>
+    );
+  }
+
   return (
     <div>
       <Container maxWidth={"sm"}>
-        {isPending ? (
-          <div className="loader-container">
-            <div className="loader"></div>
-          </div>
-        ) : (
-          <>
-            <SearchField
-              searchInput={searchInput}
-              searchInputHandler={searchInputHandler}
-            />
-            <WordWrapperComponent
-              words={words}
-              setWords={setWords}
-              searchInput={searchInput}
-              tgInitData={tg.initData}
-              tgUserId={tg.initDataUnsafe?.user?.id}
-              deleteWordHandler={deleteWordHandler}
-            />
-          </>
-        )}
+        <SearchField
+          searchInput={searchInput}
+          searchInputHandler={searchInputHandler}
+        />
+        <WordWrapperComponent
+          words={words}
+          setWords={setWords}
+          searchInput={searchInput}
+          tgInitData={tg.initData}
+          tgUserId={tg.initDataUnsafe?.user?.id}
+          deleteWordHandler={deleteWordHandler}
+        />
       </Container>
       <MyModal
         tgInitData={tg.initData}
