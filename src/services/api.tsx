@@ -8,18 +8,18 @@ export const api = {
 
 const INITIAL_TGID = "123456789";
 
-// const axiosInstance = axios.create({
-//   baseURL:
-//     "https://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me/words/",
-//   timeout: 5000,
-//   headers: { "Content-Type": "application/json" },
-// });
-
 const axiosInstance = axios.create({
-  baseURL: "http://192.168.1.231:5000/words/",
+  baseURL:
+    "https://flash-cards-fc-748769-2ed571-81-200-158-10.traefik.me/words/",
   timeout: 5000,
   headers: { "Content-Type": "application/json" },
 });
+
+// const axiosInstance = axios.create({
+//   baseURL: "http://192.168.1.231:5000/words/",
+//   timeout: 5000,
+//   headers: { "Content-Type": "application/json" },
+// });
 
 async function getWords(tgUserId: number, tgInitData: string) {
   try {
