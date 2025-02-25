@@ -65,6 +65,16 @@ export function WordWrapperComponent({
     );
   });
 
+  if (words?.length === 0) {
+    return (
+      <Box>
+        <Typography mt={"6px"} ml={"5px"} variant="h6">
+          У вас нет слов для изучения, добавьте их через бота
+        </Typography>
+      </Box>
+    );
+  }
+
   return (
     <Box>
       {filteredWords?.length === 0 ? (

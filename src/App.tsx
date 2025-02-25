@@ -8,7 +8,7 @@
       7) Поднимать слово при его редактировании
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 import { Container } from "@mui/material";
 import useRecieveData from "./services/useRecieveData";
@@ -24,7 +24,8 @@ declare global {
 }
 
 const tg = window.Telegram.WebApp;
-console.log("123");
+tg.expand();
+tg.isVerticalSwipesEnabled = false; // вертикальные свайпы для закрытия или сворачивания мини-приложения отключены
 
 function App() {
   let [words, setWords] = useState<Array<wordType>>();
@@ -33,19 +34,6 @@ function App() {
   let [modalActive, setModalActive] = useState(false);
 
   const { isPending, isError, error } = useRecieveData(tg, setWords);
-
-  useEffect(() => {
-    function resizeHandler() {
-      console.log("click event triggered");
-      document.body.style.height = "150vh";
-    }
-
-    window.visualViewport?.addEventListener("resize", resizeHandler);
-
-    return () => {
-      window.visualViewport?.addEventListener("resize", resizeHandler);
-    };
-  }, []);
 
   function searchInputHandler(newText: string) {
     setSearchInput(newText);
@@ -68,14 +56,14 @@ function App() {
   if (isError) {
     return (
       <div className="error-message">
-        <strong>Ошибка:</strong> {"Что то пошло не так"}
+        <strong>Ошибка:</strong> {error?.message}
       </div>
     );
   }
 
   return (
     <div>
-      <Container maxWidth={"sm"}>
+      <Container maxWidth={"sm"} sx={{ marginBottom: "50vh" }}>
         <SearchField
           searchInput={searchInput}
           searchInputHandler={searchInputHandler}

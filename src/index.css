@@ -18,8 +18,7 @@ hr {
 }
 
 body {
-	height: 100vh;
-	overflow: auto
+	overflow: auto /* для того чтобы явно задать положение sticki для поля поиска */
 }
 
 .search {

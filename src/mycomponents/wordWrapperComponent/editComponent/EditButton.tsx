@@ -24,20 +24,20 @@ export function EditButton({
       style={
         word.id === changingWordID
           ? {
-              position: "relative",
               color: "#fff",
               backgroundColor: "#00c300",
               borderRadius: "15px",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
+              display: "flex",
+              flexDirection: "column",
             }
           : {
-              position: "relative",
               color: "#fff",
               backgroundColor: "#e86e30",
               borderRadius: "15px",
-              height: "50px",
-              width: "50px",
+              height: "60px",
+              width: "60px",
             }
       }
     >
@@ -45,9 +45,7 @@ export function EditButton({
       {word.id === changingWordID ? (
         <Typography
           sx={{
-            position: "absolute",
-            bottom: "4px",
-            fontSize: "0.5rem;",
+            fontSize: "0.7rem;",
             color: "#fff",
           }}
         >
